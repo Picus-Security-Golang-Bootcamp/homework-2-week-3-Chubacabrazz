@@ -22,7 +22,6 @@ Go
 ```
 go run main.go -list all
 ```
-This command allows you to list books in book list.
 
 ### search command 
 ```
@@ -36,7 +35,7 @@ It works case insensitive.
 go run main.go -get <ID>
 ```
 
-### get command
+### delete command
 ```
 go run main.go -delete <ID>
 ```

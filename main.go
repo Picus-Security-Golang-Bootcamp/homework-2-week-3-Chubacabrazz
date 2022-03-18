@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"os"
 	"strconv"
 	"strings"
 )
@@ -26,7 +27,8 @@ var (
 	book4 Book = Book{ID: 25, Name: "Witcher", Page: 300, Stock: 16, Price: 45, SCode: 25, ISBN: 3123213, Author: "Andrzej Sapkowski"}
 	book5 Book = Book{ID: 26, Name: "Lord Of The Rings: The Fellowship Of The Ring", Page: 420, Stock: 5, Price: 100, SCode: 25, ISBN: 3123213, Author: "J.R.R Tolkien"}
 
-	Books = []Book{book1, book2, book3, book4, book5}
+	Books    = []Book{book1, book2, book3, book4, book5}
+	Tutorial = "-list <all> for listing books.\n-search <name> for searching books.\n-get <id> for book details.\n-delete <id> for deleting books.\n-buy <id> <quantity> for buying books."
 )
 var (
 	idptr   = flag.Int("get", 0, "ID of the Book")
@@ -95,7 +97,9 @@ func Buy(buyptr, ints int) {
 	}
 }
 func main() {
-
+	flag.Usage = func() {
+		fmt.Fprint(os.Stderr, fmt.Sprintf(Tutorial))
+	}
 	flag.Parse()
 	ints := make([]int, len(flag.Args())) //Converting flag.args string to int for second argument of -buy command(quantity).
 	for i, s := range flag.Args() {
@@ -114,7 +118,15 @@ func main() {
 	case *delete != 0:
 		Delete(*delete)
 	default:
-		fmt.Println("Error!! Enter -list all command for listing, -search <bookname> for searching books.")
+		fmt.Printf("You didn't enter a command please check the usage tutorial\n%s", Tutorial)
 	}
 
+}
+func usagetutorial(text string) {
+
+	fmt.Fprintf(os.Stderr, text)
+	fmt.Fprintf(os.Stderr, "\n\n")
+	flag.Usage()
+	fmt.Fprintf(os.Stderr, "\n")
+	os.Exit(1)
 }

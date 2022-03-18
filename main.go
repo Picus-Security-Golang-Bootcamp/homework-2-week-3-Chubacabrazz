@@ -33,7 +33,7 @@ var (
 	nameptr = flag.String("search", "", "Name of the Book")
 	delete  = flag.Int("delete", 0, "Delete")
 	buyptr  = flag.Int("buy", 0, "Buy <ID> <Quantity>")
-	listptr = flag.String("list", "all", "Lists all the books.")
+	listptr = flag.String("list", "", "Lists all the books.")
 )
 
 // func List : lists all books in database. -list all

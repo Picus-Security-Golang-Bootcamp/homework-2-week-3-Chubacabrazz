@@ -1,10 +1,15 @@
 ## About The Project
 
 This app has a book list and it has multiple functions;
+
 •list --> lists all books
+
 •search --> searchs book by name
+
 •get --> prints book details by ID
+
 •delete --> delete books by ID
+
 •buy --> buys books by ID and quantity
 
 

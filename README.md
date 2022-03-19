@@ -1,5 +1,6 @@
 ## About The Project
 
+My article about concurrency in golang ; https://medium.com/@denzszr/concurrency-in-golang-a7843e2d3073
 This app has a book list and it has multiple functions;
 
 •list --> lists all books
